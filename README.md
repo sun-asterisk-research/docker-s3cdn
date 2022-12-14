@@ -45,7 +45,7 @@ docker run --rm \
   -e MAX_COUNT=5 \
   -e SOURCE_DIR=public/dist \
   -e TARGET_DIR=build-01 \
-  ghcr.io/sunasteriskrnd/s3cdn:2.9.6
+  ghcr.io/sun-asterisk-rnd/s3cdn:2.9.6
 ```
 
 ### Environment variables
