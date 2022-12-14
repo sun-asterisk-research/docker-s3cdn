@@ -33,9 +33,9 @@ s3api -> aws s3api --endpoint-url $AWS_ENDPOINT
 
 ## Usage
 
-All-in-one:
+### All-in-one command:
 
-```
+```bash
 docker run --rm \
   -e AWS_ACCESS_KEY_ID=your-id \
   -e AWS_SECRET_ACCESS_KEY=your-secret-key \
@@ -47,6 +47,36 @@ docker run --rm \
   -e TARGET_DIR=build-01 \
   ghcr.io/sun-asterisk-rnd/s3cdn:2.9.6
 ```
+
+These command will:
+- Upload new release from `SOURCE_DIR` to `TARGET_DIR` in the S3
+- Remove old releases
+
+### Sun* CI
+
+```yaml
+jobs:
+  - name: build application
+    stage: build
+    image: node:16-alpine
+    script:
+    - yarn build
+  - name: release cdn
+    stage: release
+    image: ghcr.io/sun-asterisk-rnd/s3cdn:2.9.6
+    environment:
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      AWS_BUCKET: $AWS_BUCKET
+      AWS_REGION: $AWS_REGION
+      AWS_ENDPOINT: $AWS_ENDPOINT
+      SOURCE_DIR: public/dist
+      TARGET_DIR: build-$CI_BUILD_NUMBER
+```
+
+> $AWS_ACCESS_KEY_ID, $AWS_SECRET_ACCESS_KEY... are mapping with the secret variables in the project setting.
+
+###
 
 ### Environment variables
 
