@@ -1,0 +1,37 @@
+version: '3.6'
+
+services:
+  client:
+    image: sunasteriskrnd/s3cdn:latest
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    tty: true
+    command: /bin/bash
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-minio}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-miniostorage}
+      AWS_BUCKET: ${AWS_BUCKET:-cdn}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      AWS_ENDPOINT: ${AWS_ENDPOINT:-http://minio:9000}
+      SOURCE_DIR: sample
+      TARGET_DIR: ${TARGET_DIR:-build-1}
+    volumes:
+      - ./:/srv
+
+  minio:
+    image: minio/minio:latest
+    restart: always
+    command:
+      - server
+      - --console-address
+      - :9001
+      - /data
+    ports:
+      - 9001:9001
+    environment:
+      MINIO_ACCESS_KEY: ${AWS_ACCESS_KEY_ID:-minio}
+      MINIO_SECRET_KEY: ${AWS_SECRET_ACCESS_KEY:-miniostorage}
+      MINIO_REGION_NAME: ${AWS_REGION:-us-east-1}
+    volumes:
+      - .minio-data:/data

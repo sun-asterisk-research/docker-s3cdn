@@ -1,0 +1,19 @@
+<CORSConfiguration>
+  <CORSRule>
+    <AllowedHeader>Authorization</AllowedHeader>
+    <AllowedHeader>Content-*</AllowedHeader>
+
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>HEAD</AllowedMethod>
+
+    <AllowedOrigin>http://cdn.sun-asterisk.ai</AllowedOrigin>
+    <AllowedOrigin>https://cdn.sun-asterisk.ai</AllowedOrigin>
+    <AllowedOrigin>http://ci.sun-asterisk.com</AllowedOrigin>
+    <AllowedOrigin>https://ci.sun-asterisk.com</AllowedOrigin>
+
+    <ExposeHeader>Access-Control-Allow-Origin</ExposeHeader>
+    <ExposeHeader>ETag</ExposeHeader>
+
+    <MaxAgeSeconds>86400</MaxAgeSeconds>
+  </CORSRule>
+</CORSConfiguration>
