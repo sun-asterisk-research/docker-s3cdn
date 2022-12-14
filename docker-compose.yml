@@ -2,7 +2,9 @@ version: '3.6'
 
 services:
   client:
-    image: sunasteriskrnd/s3cdn:latest
+    image: ghcr.io/sun-asterisk-rnd/s3cdn:2.9.6
+    depends_on:
+      - minio
     build:
       context: .
       dockerfile: docker/Dockerfile
