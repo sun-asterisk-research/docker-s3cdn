@@ -132,3 +132,7 @@ make push
 # push an image:
 make push-2.9.6
 ```
+
+## Demo
+
+![](./sample/demo.gif)
