@@ -56,13 +56,14 @@ These command will:
 
 ```yaml
 jobs:
-  - name: build application
+  - name: Build application
     stage: build
     image: node:16-alpine
     script:
     - yarn build
-  - name: release cdn
-    stage: release
+
+  - name: Release to CDN
+    stage: pre-deploy
     image: ghcr.io/sun-asterisk-rnd/s3cdn:2.9.6
     environment:
       AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
@@ -72,9 +73,16 @@ jobs:
       AWS_ENDPOINT: $AWS_ENDPOINT
       SOURCE_DIR: public/dist
       TARGET_DIR: build-$CI_BUILD_NUMBER
+
+  - name: Deploy to server
+    stage: deploy
+    script:
+    - ....
 ```
 
 > $AWS_ACCESS_KEY_ID, $AWS_SECRET_ACCESS_KEY... are mapping with the secret variables in the project setting.
+
+Please make sure that the CDN_URL is set in the application.
 
 ###
 
