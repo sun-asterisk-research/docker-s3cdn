@@ -4,7 +4,7 @@ shopt -s expand_aliases
 source ~/.bashrc
 
 function get_old_releases() {
-  s3 ls "s3://${AWS_BUCKET}" | awk '{ print $2 }' | head -n -${MAX_COUNT}
+  s3 ls "s3://${AWS_BUCKET}" | awk '{ print $2 }' | sort --version-sort | head -n -${MAX_COUNT}
 }
 
 # clean old releases
@@ -18,8 +18,11 @@ do
   s3 rm --recursive "s3://${AWS_BUCKET}/${build}"
   echo
 done
-echo 'Cleaned successfully!'
 
 echo '-----------------------------'
-echo 'Available releases'
+echo 'Available releases:'
 s3 ls "s3://${AWS_BUCKET}"
+
+echo '-----------------------------'
+echo 'Cleaned successfully!'
+echo '-----------------------------'
