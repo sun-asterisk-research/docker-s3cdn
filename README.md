@@ -3,7 +3,7 @@
 Websites serving bandwidth-intensive video content, where high latencies and slow loading times directly impact user experience, can benefit greatly from using object storage with a CDN. CDNs reduce page load times, improve performance, and reduce bandwidth and infrastructure costs by caching assets across a set of geographically distributed servers.
 
 This is a Docker image for the AWS CLI. It called `s3cdn` that provides the built-in script to do these things:
-- Release your new files (js, css, images...) to S3. For example: `release-1`, `release-2`, `release-3`
+1. Release your new files (js, css, images...) to S3. For example: `release-1`, `release-2`, `release-3`
 ```bash
 > s3 ls s3://cdn
         PRE release-1/
@@ -15,7 +15,7 @@ This is a Docker image for the AWS CLI. It called `s3cdn` that provides the buil
         PRE release-7/
 ```
 
-- Remove the old releases (ex: you want to keep the last 5 releases in S3). For example, the last 5 releases will be:
+2. Remove the old releases (ex: you want to keep the last 5 releases in S3). For example, the last 5 releases will be:
 ```bash
 > s3 ls s3://cdn
         PRE release-3/
@@ -23,6 +23,12 @@ This is a Docker image for the AWS CLI. It called `s3cdn` that provides the buil
         PRE release-5/
         PRE release-6/
         PRE release-7/
+```
+
+3. Provide bash aliases for S3 (Please use `/bin/bash`):
+```
+s3 -> aws s3 --endpoint-url $AWS_ENDPOINT
+s3api -> aws s3api --endpoint-url $AWS_ENDPOINT
 ```
 
 ## Usage
