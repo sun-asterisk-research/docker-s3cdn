@@ -36,7 +36,7 @@ s3api -> aws s3api --endpoint-url $AWS_ENDPOINT
 ### Pull Docker image
 
 ```bash
-docker pull ghcr.io/sun-asterisk-rnd/s3cdn:2.9.6
+docker pull ghcr.io/sun-asterisk-research/s3cdn:2.9.6
 ```
 
 ### All-in-one command:
@@ -51,7 +51,7 @@ docker run --rm \
   -e MAX_COUNT=5 \
   -e SOURCE_DIR=public/dist \
   -e TARGET_DIR=build-01 \
-  ghcr.io/sun-asterisk-rnd/s3cdn:2.9.6
+  ghcr.io/sun-asterisk-research/s3cdn:2.9.6
 ```
 
 These command will:
@@ -70,7 +70,7 @@ jobs:
 
   - name: Release to CDN
     stage: pre-deploy
-    image: ghcr.io/sun-asterisk-rnd/s3cdn:2.9.6
+    image: ghcr.io/sun-asterisk-research/s3cdn:2.9.6
     environment:
       AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
       AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
