@@ -1,12 +1,14 @@
 #!/bin/bash
 set -e
 
-if [ -z "$1" ];
-then
+
+if [ -z "$1" ]; then
   target_dir=$TARGET_DIR
 else
   target_dir=$1
 fi
+
+target_dir=$(echo $target_dir | awk '{gsub(/^[\/ ]+|[\/ ]+$/,"")} {print $0 }')
 
 # upload new files
 echo "Uploading files to s3://${AWS_BUCKET}/${target_dir}"
