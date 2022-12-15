@@ -136,3 +136,9 @@ make push-2.9.6
 ## Demo
 
 ![](./sample/demo.gif)
+
+## Demo 2
+
+TARGET_DIR=/prod/build9/:
+
+![](./sample/demo-2.gif)
