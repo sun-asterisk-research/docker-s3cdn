@@ -33,6 +33,12 @@ s3api -> aws s3api --endpoint-url $AWS_ENDPOINT
 
 ## Usage
 
+### Pull Docker image
+
+```bash
+docker pull ghcr.io/sun-asterisk-rnd/s3cdn:2.9.6
+```
+
 ### All-in-one command:
 
 ```bash
