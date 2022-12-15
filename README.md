@@ -88,16 +88,16 @@ Please make sure that the CDN_URL is set in the application.
 
 ### Environment variables
 
-| Name | Description |Default |
-| -------- | -------- | -------- |
-| AWS_ACCESS_KEY_ID     | The access key     |     |
-| AWS_SECRET_ACCESS_KEY     | The secret of the access key    |     |
-| AWS_BUCKET     | The bucket label     |     |
-| AWS_REGION     | The region ID    |     |
-| AWS_ENDPOINT     | The endpoint URL     | https://s3.amazonaws.com     |
-| SOURCE_DIR     | The source folder will upload to S3     |      |
-| TARGET_DIR     | The destination folder in S3     |     |
-| MAX_COUNT     | The number of the last releases will be keep in S3     | 5     |
+| Name | Description | Default | Example |
+| -------- | -------- | -------- | -------- |
+| AWS_ACCESS_KEY_ID     | The access key     |     | minio    |
+| AWS_SECRET_ACCESS_KEY     | The secret of the access key    |     | miniosecret    |
+| AWS_BUCKET     | The bucket label     |     | cdn    |
+| AWS_REGION     | The region ID    |     | us-east-1    |
+| AWS_ENDPOINT     | The endpoint URL     | https://s3.amazonaws.com     | http://localhost:9000    |
+| SOURCE_DIR     | The source folder will upload to S3     |      | public/dist    |
+| TARGET_DIR     | The destination folder in S3     |     | prod/release-1    |
+| MAX_COUNT     | The number of the last releases will be keep in S3     | 5     | 6    |
 
 ## Develop
 
