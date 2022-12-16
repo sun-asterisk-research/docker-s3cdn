@@ -1,3 +1,4 @@
 .env
 .minio-data
+.vscode
 cors_policies.xml

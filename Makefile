@@ -1,4 +1,6 @@
 TAG ?= latest 2.9.6
+REGISTRY ?= ghcr.io
+IMAGE_NAME ?= sun-asterisk-research/s3cdn
 
 .PHONY: all
 
