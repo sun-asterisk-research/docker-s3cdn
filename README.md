@@ -79,6 +79,8 @@ jobs:
       AWS_ENDPOINT: $AWS_ENDPOINT
       SOURCE_DIR: public/dist
       TARGET_DIR: build-$CI_BUILD_NUMBER
+    script:
+    - run.sh
 
   - name: Deploy to server
     stage: deploy
